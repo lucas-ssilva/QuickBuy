@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using QuickBuy.Dominio.ObjetoDeValor;
 
 namespace QuickBuy.Dominio.Entities
 {
-    class Pedido
+    class Pedido : Entidade
     {
         public int Id { get; set; }
         public DateTime DataPedido { get; set; }
@@ -21,5 +22,27 @@ namespace QuickBuy.Dominio.Entities
         public FormaPagamento FormaPagamento { get; set; }
 
         public ICollection<ItemPedido> ItensPedido { get; set; }
+
+        public override void Validate()
+        {
+            LimparMensagens();
+
+            if(!ItensPedido.Any())
+            {
+               AdicionarErro("Pedido deve ter pelo menos um item");
+            }
+            if (string.IsNullOrEmpty(CEP))
+            {
+               AdicionarErro("Campo CEP é obrigatorio");
+            }
+            if (string.IsNullOrEmpty(EndereçoCompleto))
+            {
+                AdicionarErro("Campos do Endereço são obrigatorios");
+            }
+            if (FormaPagamentoId == 0)
+            {
+                AdicionarErro("Não foram selecionadas formas de pagamento");
+            }
+        }
     }
 }

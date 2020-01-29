@@ -4,7 +4,7 @@ using System.Text;
 
 namespace QuickBuy.Dominio.Entities
 {
-    class Usuario
+    class Usuario : Entidade
     {
         public int Id { get; set; }
         public string Email { get; set; }
@@ -23,6 +23,26 @@ namespace QuickBuy.Dominio.Entities
             Senha = senha;
             Nome = nome;
             Sobrenome = sobrenome;
+        }
+
+        public override void Validate()
+        {
+            if (string.IsNullOrEmpty(Email))
+            {
+                AdicionarErro("Campo E-mail é Obrigatorio");
+            }
+            if (string.IsNullOrEmpty(Senha))
+            {
+                AdicionarErro("CAmpo senha é obrigatorio");
+            }
+            if (string.IsNullOrEmpty(Nome))
+            {
+                AdicionarErro("Campo {0} é obrigatorio");
+            }
+            if (string.IsNullOrEmpty(Nome))
+            {
+                AdicionarErro("Campo Sobrenome é obrigatorio");
+            }
         }
     }
 }
