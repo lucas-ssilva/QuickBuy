@@ -1,0 +1,8 @@
+{
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "SqlServerConnection": "",
+    "QuickBuyDB": "server=localhost;userid=dev;password=Lucas2831994;database=QuickBuyDB"
+
+  }
+}
