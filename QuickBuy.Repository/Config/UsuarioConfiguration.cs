@@ -17,6 +17,8 @@ namespace QuickBuy.Repository.Config
             builder.Property(u => u.Sobrenome).IsRequired().HasMaxLength(30);
             builder.Property(u => u.Senha).IsRequired();
 
+            builder.HasMany(u => u.Pedidos).WithOne(p => p.Usuario);
+
         }
     }
 }
