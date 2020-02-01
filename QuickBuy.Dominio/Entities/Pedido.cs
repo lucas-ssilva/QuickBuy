@@ -6,7 +6,7 @@ using QuickBuy.Dominio.ObjetoDeValor;
 
 namespace QuickBuy.Dominio.Entities
 {
-   public class Pedido : Entidade
+  public class Pedido : Entidade
     {
         public int Id { get; set; }
         public DateTime DataPedido { get; set; }
@@ -19,7 +19,7 @@ namespace QuickBuy.Dominio.Entities
         public string EndereçoCompleto { get; set; }
         public int Numero { get; set; }
         public int FormaPagamentoId { get; set; }
-        public FormaPagamento FormaPagamento { get; set; }
+        public virtual FormaPagamento FormaPagamento { get; set; }
 
         public virtual ICollection<ItemPedido> ItensPedido { get; set; }
 
