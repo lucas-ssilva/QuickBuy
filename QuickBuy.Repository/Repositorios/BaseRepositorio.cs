@@ -8,45 +8,45 @@ using System.Linq;
 
 namespace QuickBuy.Repository.Repositorios
 {
-    class BaseRepositorio<TEntity> : IBaseRepository<TEntity> where TEntity : class
+   public class BaseRepositorio<TEntity> : IBaseRepository<TEntity> where TEntity : class
 
     {
-        private readonly QuickBuyContext _quickBuyContext;
+        protected readonly QuickBuyContext QuickBuyContext;
 
         public BaseRepositorio(QuickBuyContext quickBuyContext) 
         {
-            _quickBuyContext = quickBuyContext;
+            QuickBuyContext = quickBuyContext;
         }
         public void Adicionar(TEntity entity)
         {
-            _quickBuyContext.Set<TEntity>().Add(entity);
-            _quickBuyContext.SaveChanges();
+            QuickBuyContext.Set<TEntity>().Add(entity);
+            QuickBuyContext.SaveChanges();
         }
 
         public void Atualizar(TEntity entity)
         {
-            _quickBuyContext.Set<TEntity>().Update(entity);
-            _quickBuyContext.SaveChanges();
+            QuickBuyContext.Set<TEntity>().Update(entity);
+            QuickBuyContext.SaveChanges();
         }
 
         public TEntity ObterPorId(int Id)
         {
-            return _quickBuyContext.Set<TEntity>().Find(Id);
+            return QuickBuyContext.Set<TEntity>().Find(Id);
         }
 
         public IEnumerable<TEntity> ObterTodos()
         {
-            return _quickBuyContext.Set<TEntity>().ToList();
+            return QuickBuyContext.Set<TEntity>().ToList();
         }
 
         public void Remover(TEntity entity)
         {
-            _quickBuyContext.Set<TEntity>().Remove(entity);
-            _quickBuyContext.SaveChanges();
+            QuickBuyContext.Set<TEntity>().Remove(entity);
+            QuickBuyContext.SaveChanges();
         }
         public void Dispose()
         {
-            throw new NotImplementedException();
+            QuickBuyContext.Dispose();
         }
     }
 }
