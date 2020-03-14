@@ -33,7 +33,7 @@ namespace QuickBuy.Dominio.Entities
             }
             if (string.IsNullOrEmpty(Senha))
             {
-                AdicionarErro("CAmpo senha é obrigatorio");
+                AdicionarErro("Campo senha é obrigatorio");
             }
             if (string.IsNullOrEmpty(Nome))
             {
